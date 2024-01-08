@@ -1,0 +1,174 @@
+:root {
+  --color-main-bg: #eff1f8;
+  --color-white: #fff;
+  --color-black: #272727;
+  --color-grey: #eff1f8;
+  --color-blue: #3a96b7;
+  --color-blue-lite: #2bb1e6;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Box sizing правила */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Предотвращение увеличения размера шрифта */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Удалите отступы по умолчанию в пользу лучшего контроля CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Удалите стили списка для элементов ul, ol с ролью списка, что предполагает удаление стилей по умолчанию */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Установить основные параметры тела по умолчанию */
+body {
+  display: flex;
+
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  line-height: 1.5;
+  place-items: center;
+}
+
+/* Установите более короткую высоту строк в заголовках и интерактивных элементах */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Баланс переноса текста в заголовках */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+a {
+  text-decoration: inherit;
+
+  color: var(--color-blue-lite);
+
+  font-weight: 500;
+}
+
+/* Упростите работу с изображениями */
+img,
+picture {
+  display: block;
+
+  max-width: 100%;
+}
+
+/* Наследовать шрифты для входов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Убедитесь, что текстовое поле без атрибута строк не маленькое */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Все, к чему было привязано, должно иметь дополнительное поле прокрутки */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+a:hover {
+  color: var(--color-blue);
+}
+a.active {
+  color: var(--color-blue);
+}
+a.active svg {
+  fill: var(--color-blue);
+}
+
+button {
+  padding: 0.6em 1.2em;
+
+  cursor: pointer;
+  transition:
+    background-color 0.25s,
+    color 0.15s;
+
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-black);
+
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+}
+button:hover {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--color-black);
+    background-color: var(--color-black);
+  }
+  a:hover {
+    color: var(--color-blue);
+  }
+  button {
+    background-color: var(--color-grey);
+  }
+}
