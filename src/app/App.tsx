@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { AppLayout, PrivateLayout } from '@/app/layouts';
-import { WithQueryClient, WithRouter } from '@/app/providers';
+import { WithAntUI, WithQueryClient, WithRouter } from '@/app/providers';
 import { AboutPage } from '@/pages/about';
 import { LoginPage } from '@/pages/login';
 import { NotFoundPage } from '@/pages/notFound';
@@ -9,24 +9,25 @@ import { ProfilePage } from '@/pages/profile';
 import { BASE_PATH, PATH_PAGE } from '@/shared/lib';
 
 export const App = (): JSX.Element => (
-  <WithQueryClient>
-    <WithRouter>
-      <Routes>
-        <Route path={PATH_PAGE.login} element={<LoginPage />} />
-
-        <Route
-          path={BASE_PATH}
-          element={
-            <PrivateLayout>
-              <AppLayout />
-            </PrivateLayout>
-          }
-        >
-          <Route index element={<AboutPage />} />
-          <Route path={PATH_PAGE.profile} element={<ProfilePage />} />
+  <WithAntUI>
+    <WithQueryClient>
+      <WithRouter>
+        <Routes>
+          <Route path={PATH_PAGE.login} element={<LoginPage />} />
+          <Route
+            path={BASE_PATH}
+            element={
+              <PrivateLayout>
+                <AppLayout />
+              </PrivateLayout>
+            }
+          >
+            <Route index element={<AboutPage />} />
+            <Route path={PATH_PAGE.profile} element={<ProfilePage />} />
+          </Route>
           <Route path='*' element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </WithRouter>
-  </WithQueryClient>
+        </Routes>
+      </WithRouter>
+    </WithQueryClient>
+  </WithAntUI>
 );

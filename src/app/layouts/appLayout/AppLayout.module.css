@@ -10,15 +10,13 @@
   background-color: var(--color-main-bg);
 
   grid-template-areas:
-    'head head'
     'nav  main'
     'nav  main';
-  grid-template-rows: 40px 1fr 30px;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 200px 1fr;
 }
 
 .layout--collapseNav {
-  grid-template-columns: 58px 1fr;
+  grid-template-columns: 46px 1fr;
 }
 
 .layout__header {
@@ -37,8 +35,8 @@
   display: flex;
   flex-direction: column;
 
-  padding: 25px;
+  padding: var(--base-page-padding);
 
-  border-radius: 8px 0 0 0;
+  border-radius: var(--base-border-radius) 0 0 0;
   background-color: var(--color-white);
 }

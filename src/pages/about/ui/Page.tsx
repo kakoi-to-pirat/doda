@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
+import { Button } from '@/shared/ui/button';
 import { Chart } from '@/widgets/chart';
+import { Header } from '@/widgets/header';
 
 import s from './Page.module.css';
 
@@ -9,15 +11,17 @@ export const AboutPage = () => {
 
   return (
     <div className={s.about}>
-      <h1>Doda</h1>
-
-      <div className={s.card}>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <Header className={s.layout__header}>
+        <h1>Doda - администрирование</h1>
+      </Header>
 
       <Chart />
+
+      <div>
+        <Button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,20 +1,19 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import logo from '@/shared/assets/icons/logo.png';
 import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
 import ProfileIcon from '@/shared/assets/icons/profile.svg?react';
-import { BASE_PATH, PATH_PAGE } from '@/shared/lib';
+import { PATH_PAGE } from '@/shared/lib';
+import { Logo } from '@/widgets/logo';
 
 import { IHeader } from './Header.h';
 import s from './Header.module.css';
 
 import cn from 'classnames';
 
-export const Header = ({ className }: IHeader) => (
+export const Header = ({ className, children }: IHeader) => (
   <header className={cn(className, s.header)}>
-    <Link to={`${BASE_PATH}/`} className={s.header__logo}>
-      <img src={logo} alt='Doda' />
-    </Link>
+    <Logo />
+    <div className={s.header__content}>{children}</div>
     <div className={s.header__info}>
       <NavLink to={PATH_PAGE.profile}>
         <ProfileIcon width='19px' height='19px' />

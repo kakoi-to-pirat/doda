@@ -1,8 +1,7 @@
-import ProfileIcon from '@/shared/assets/icons/profile.svg?react';
+import { Header } from '@/widgets/header';
 
 export const ProfilePage = () => (
-  <>
-    <ProfileIcon />
-    <h2>Profile page</h2>
-  </>
+  <Header>
+    <h2>Профиль</h2>
+  </Header>
 );

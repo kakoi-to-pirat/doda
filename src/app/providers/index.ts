@@ -1,5 +1,8 @@
-export * from './WithRouter/WithRouter.h';
-export { WithRouter } from './WithRouter/WithRouter';
+export * from './withRouter/WithRouter.h';
+export { WithRouter } from './withRouter/WithRouter';
 
-export * from './WithQueryClient/WithQueryClient.h';
-export { WithQueryClient } from './WithQueryClient/WithQueryClient';
+export * from './withQueryClient/WithQueryClient.h';
+export { WithQueryClient } from './withQueryClient/WithQueryClient';
+
+export * from './withQueryClient/WithQueryClient.h';
+export { WithAntUI } from './withAntUI/WithAntUI';
