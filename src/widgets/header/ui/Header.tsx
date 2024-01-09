@@ -1,3 +1,4 @@
+import { Breadcrumb } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
@@ -10,10 +11,23 @@ import s from './Header.module.css';
 
 import cn from 'classnames';
 
+const Breadcrumbs = () => {
+  const crumbs = ['doda', 'отчеты', 'общий отчет'];
+
+  return (
+    <Breadcrumb>
+      {crumbs.map((crumb, index) => (
+        <Breadcrumb.Item key={index}>{crumb}</Breadcrumb.Item>
+      ))}
+    </Breadcrumb>
+  );
+}
+
 export const Header = ({ className, children }: IHeader) => (
   <header className={cn(className, s.header)}>
     <Logo />
-    <div className={s.header__content}>{children}</div>
+    <Breadcrumbs />
+    {children && children}
     <div className={s.header__info}>
       <NavLink to={PATH_PAGE.profile}>
         <ProfileIcon width='19px' height='19px' />

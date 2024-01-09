@@ -80,7 +80,7 @@ export const Sidebar = ({ className, onCollapse = () => null }: ISidebar) => {
 
       <Menu
         className={s.navigation__menu}
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={['5']}
         defaultOpenKeys={['sub1']}
         mode='inline'
         inlineCollapsed={isCollapsed}
