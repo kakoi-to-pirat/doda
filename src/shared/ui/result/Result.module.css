@@ -1,0 +1,4 @@
+.result svg > g > path:nth-child(11) {
+  background-color: #eee;
+  fill: var(--color-blue);
+}

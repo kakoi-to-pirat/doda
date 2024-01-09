@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from '@/widgets/header';
 import { Sidebar } from '@/widgets/sidebar';
 
 import s from './AppLayout.module.css';
@@ -15,7 +14,6 @@ export const AppLayout = () => {
     <div
       className={cn(s.layout, { [s['layout--collapseNav']]: isCollapsedNav })}
     >
-      <Header className={s.layout__header} />
       <Sidebar
         className={s.layout__navigation}
         onCollapse={() => setIsCollapsedNav((prev) => !prev)}
