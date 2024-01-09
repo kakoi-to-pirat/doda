@@ -1,7 +1,8 @@
 import { Header } from '@/widgets/header';
 
 export const ProfilePage = () => (
-  <Header>
+  <>
+    <Header />
     <h2>Профиль</h2>
-  </Header>
+  </>
 );

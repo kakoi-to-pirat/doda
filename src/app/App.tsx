@@ -2,10 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 
 import { AppLayout, PrivateLayout } from '@/app/layouts';
 import { WithAntUI, WithQueryClient, WithRouter } from '@/app/providers';
-// import { AboutPage } from '@/pages/about';
-// import { LoginPage } from '@/pages/login';
-// import { NotFoundPage } from '@/pages/notFound';
-// import { ProfilePage } from '@/pages/profile';
 import { BASE_PATH, PATH_PAGE } from '@/shared/lib';
 import loadable from '@loadable/component';
 
