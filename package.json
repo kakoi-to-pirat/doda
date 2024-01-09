@@ -14,6 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@loadable/component": "^5.16.3",
     "@tanstack/react-query": "^5.17.0",
     "antd": "^5.12.8",
     "axios": "^1.6.3",
@@ -27,13 +28,16 @@
   "devDependencies": {
     "@ant-design/icons": "^5.2.6",
     "@feature-sliced/eslint-config": "0.1.0-beta.6",
+    "@img/sharp-darwin-arm64": "^0.33.1",
     "@tanstack/eslint-plugin-query": "^5.14.6",
+    "@types/loadable__component": "^5.13.8",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "browserslist-to-esbuild": "^2.1.1",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-boundaries": "^4.0.1",
@@ -44,6 +48,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
+    "sharp": "^0.33.1",
     "stylelint": "^16.1.0",
     "stylelint-config-recommended": "^14.0.0",
     "stylelint-order": "^6.0.4",
@@ -51,6 +56,7 @@
     "stylelint-prettier": "^5.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-svgr": "^4.2.0"
   },

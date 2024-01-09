@@ -2,11 +2,28 @@ import { Route, Routes } from 'react-router-dom';
 
 import { AppLayout, PrivateLayout } from '@/app/layouts';
 import { WithAntUI, WithQueryClient, WithRouter } from '@/app/providers';
-import { AboutPage } from '@/pages/about';
-import { LoginPage } from '@/pages/login';
-import { NotFoundPage } from '@/pages/notFound';
-import { ProfilePage } from '@/pages/profile';
+// import { AboutPage } from '@/pages/about';
+// import { LoginPage } from '@/pages/login';
+// import { NotFoundPage } from '@/pages/notFound';
+// import { ProfilePage } from '@/pages/profile';
 import { BASE_PATH, PATH_PAGE } from '@/shared/lib';
+import loadable from '@loadable/component';
+
+const AboutPage = loadable(() => import('@/pages/about'), {
+  resolveComponent: (components) => components.AboutPage,
+});
+
+const LoginPage = loadable(() => import('@/pages/login'), {
+  resolveComponent: (components) => components.LoginPage,
+});
+
+const NotFoundPage = loadable(() => import('@/pages/notFound'), {
+  resolveComponent: (components) => components.NotFoundPage,
+});
+
+const ProfilePage = loadable(() => import('@/pages/profile'), {
+  resolveComponent: (components) => components.ProfilePage,
+});
 
 export const App = (): JSX.Element => (
   <WithAntUI>
