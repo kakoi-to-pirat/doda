@@ -1,16 +1,14 @@
-import type { DatePickerProps } from 'antd';
-import { DatePicker, Space } from 'antd';
-import { useState } from 'react';
+import { DatePicker, Space, Radio } from 'antd';
+import type { RangePickerProps } from 'antd/es/date-picker';
 
-import { Button } from '@/shared/ui/button';
 import { Chart } from '@/widgets/chart';
 
 import s from './Page.module.css';
 
-export const StatisticsPage = () => {
-  const [count, setCount] = useState(0);
+const { RangePicker } = DatePicker;
 
-  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+export const StatisticsPage = () => {
+  const onChange: RangePickerProps['onChange'] = (date, dateString) => {
     // eslint-disable-next-line no-console
     console.log(date, dateString);
   };
@@ -18,14 +16,19 @@ export const StatisticsPage = () => {
   return (
     <div className={s.statistics}>
       <Space direction='horizontal'>
-        с<DatePicker placeholder='' onChange={onChange} />
-        по <DatePicker placeholder='' onChange={onChange} />
-        <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
+        <Radio.Group defaultValue='week' buttonStyle='solid'>
+          <Radio.Button value='today'>Сегодня</Radio.Button>
+          <Radio.Button value='yesterday'>Вчера</Radio.Button>
+          <Radio.Button value='week'>Неделя</Radio.Button>
+          <Radio.Button value='month'>Месяц</Radio.Button>
+          <Radio.Button value='quarter'>Квартал</Radio.Button>
+          <Radio.Button value='year'>Год</Radio.Button>
+        </Radio.Group>
+
+        <RangePicker onChange={onChange} placeholder={['c', 'по']} />
       </Space>
 
-      <Chart />
+      <Chart className={s.statistics__chart} />
     </div>
   );
 };

@@ -8,6 +8,10 @@ import {
   Legend,
 } from 'recharts';
 
+import { LAYOUT } from '@/shared/lib';
+
+import { IChart } from './Chart.h';
+
 const data = [
   {
     name: 'Page A',
@@ -66,31 +70,51 @@ const data = [
   {
     name: 'Page M',
     uv: 3890,
+    pv: 1200,
+    amt: 2100,
+  },
+  {
+    name: 'Page N',
+    uv: 3890,
+    pv: 200,
+    amt: 2100,
+  },
+  {
+    name: 'Page O',
+    uv: 3890,
+    pv: 2200,
+    amt: 2100,
+  },
+  {
+    name: 'Page P',
+    uv: 2890,
     pv: 4200,
+    amt: 2100,
+  },
+  {
+    name: 'Page Q',
+    uv: 1890,
+    pv: 4200,
+    amt: 2100,
+  },
+  {
+    name: 'Page R',
+    uv: 3890,
+    pv: 6200,
     amt: 2100,
   },
 ];
 
-export const Chart = () => {
+export const Chart = ({ className, width = 1020, height = 400 }: IChart) => {
   return (
-    <BarChart
-      width={650}
-      height={300}
-      data={data}
-      margin={{
-        top: 20,
-        right: 20,
-        left: 0,
-        bottom: 5,
-      }}
-    >
+    <BarChart className={className} width={width} height={height} data={data}>
       <CartesianGrid strokeDasharray='3 3' />
       <XAxis dataKey='name' />
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey='pv' stackId='a' fill='#8884d8' />
-      <Bar dataKey='uv' stackId='a' fill='#82ca9d' />
+      <Bar dataKey='pv' stackId='a' fill={LAYOUT.colors['--color-blue']} />
+      <Bar dataKey='uv' stackId='a' fill={LAYOUT.colors['--color-green']} />
     </BarChart>
   );
 };
