@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { LAYOUT } from '@/shared/lib';
+import { Breadcrumbs } from '@/widgets/breadcrumbs';
+import { Header } from '@/widgets/header';
+import { Logo } from '@/widgets/logo';
 import { Sidebar } from '@/widgets/sidebar';
 
 import s from './AppLayout.module.css';
@@ -23,6 +26,11 @@ export const AppLayout = () => {
       />
 
       <main className={cn(s.layout__main, s.main)}>
+        <Header>
+          <Logo />
+          <Breadcrumbs />
+        </Header>
+
         <Outlet />
       </main>
     </div>
