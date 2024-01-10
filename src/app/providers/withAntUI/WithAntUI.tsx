@@ -1,23 +1,25 @@
 import { ConfigProvider } from 'antd';
 
+import { LAYOUT } from '@/shared/lib';
+
 import { IWithAntUI } from './WithAntUI.h';
 
 export const WithAntUI = ({ children }: IWithAntUI): JSX.Element => (
   <ConfigProvider
     theme={{
       token: {
-        colorPrimary: '#3a96b7',
-        colorInfo: '#3a96b7',
-        colorSuccess: '#3ab77c',
-        colorTextBase: '#272727',
-        borderRadius: 8,
-        colorBgContainer: '#eff1f8',
+        colorPrimary: LAYOUT.colors['--color-blue'],
+        colorInfo: LAYOUT.colors['--color-blue'],
+        colorSuccess: LAYOUT.colors['--color-green'],
+        colorTextBase: LAYOUT.colors['--color-black'],
+        borderRadius: LAYOUT.quantities['--base-border-radius'],
+        colorBgContainer: LAYOUT.colors['--color-main-bg'],
       },
       components: {
         Menu: {
-          itemColor: '#272727',
-          itemHoverColor: '#fff',
-          itemHoverBg: '#3a96b7',
+          itemColor: LAYOUT.colors['--color-black'],
+          itemHoverColor: LAYOUT.colors['--color-white'],
+          itemHoverBg: LAYOUT.colors['--color-blue'],
           itemSelectedBg: 'inherit',
           subMenuItemBg: 'inherit',
           zIndexPopup: 0,

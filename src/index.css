@@ -9,6 +9,10 @@
   --color-yellow: #faad14;
   --color-red: #ff4d4f;
 
+  --font-roboto-normal: 'Roboto Regular', serif;
+  --font-roboto-medium: 'Roboto Medium', serif;
+  --font-roboto-bold: 'Roboto Bold', serif;
+
   --fz-xxs: 8px;
   --fz-xs: 10px;
   --fz-s: 12px;
@@ -28,7 +32,7 @@
   color: var(--color-black);
   background-color: var(--color-white);
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-roboto-normal);
   font-weight: 400;
   line-height: 1.1;
 
@@ -99,6 +103,8 @@ h2,
 h3,
 h4 {
   text-wrap: balance;
+
+  font-family: var(--font-roboto-medium);
 }
 
 a {
