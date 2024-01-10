@@ -1,6 +1,7 @@
 import { Menu } from 'antd';
 import { useState } from 'react';
 
+import { PATH_CONFIG, PATH_PAGE } from '@/shared/lib';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
 import { ISidebar } from './Sidebar.h';
@@ -30,8 +31,7 @@ export const Sidebar = ({ className, onCollapse = () => null }: ISidebar) => {
 
       <Menu
         className={s.navigation__menu}
-        defaultSelectedKeys={['5']}
-        defaultOpenKeys={['sub1']}
+        defaultSelectedKeys={[PATH_CONFIG[PATH_PAGE.statistics].id]}
         mode='inline'
         inlineCollapsed={isCollapsed}
         items={sidebarItems}

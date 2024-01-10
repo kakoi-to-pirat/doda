@@ -1,7 +1,7 @@
 import { Breadcrumb } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 
-import { PATH_PAGE, PATH_PAGE_TRANSLATE_RU } from '@/shared/lib';
+import { PATH_PAGE, PATH_CONFIG } from '@/shared/lib';
 
 export const Breadcrumbs = ({ isGoBack = false, backTitle = 'Назад' }) => {
   const location = useLocation();
@@ -23,7 +23,7 @@ export const Breadcrumbs = ({ isGoBack = false, backTitle = 'Назад' }) => {
       ? PATH_PAGE.root
       : `/${crumbs.slice(0, index + 1).join('/')}`;
 
-    const crumbTitle = (PATH_PAGE_TRANSLATE_RU[url] || crumb).toLowerCase();
+    const crumbTitle = (PATH_CONFIG[url]?.title || crumb).toLowerCase();
 
     return {
       title: !isLast ? <Link to={url}>{crumbTitle}</Link> : crumbTitle,

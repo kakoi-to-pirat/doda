@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { AppLayout, PrivateLayout } from '@/app/layouts';
-import { BASE_PATH, PATH_PAGE, PATH_PAGE_TRANSLATE_RU } from '@/shared/lib';
+import { BASE_PATH, PATH_PAGE, PATH_CONFIG } from '@/shared/lib';
 import loadable from '@loadable/component';
 
 const AboutPage = loadable(() => import('@/pages/about'), {
@@ -19,6 +19,60 @@ const NotFoundPage = loadable(() => import('@/pages/notFound'), {
 const ProfilePage = loadable(() => import('@/pages/profile'), {
   resolveComponent: (components) => components.ProfilePage,
 });
+
+const StatisticsPage = loadable(() => import('@/pages/statistics'), {
+  resolveComponent: (components) => components.StatisticsPage,
+});
+
+const MonitoringPage = loadable(() => import('@/pages/monitoring'), {
+  resolveComponent: (components) => components.MonitoringPage,
+});
+
+const PaymentPage = loadable(() => import('@/pages/payment'), {
+  resolveComponent: (components) => components.PaymentPage,
+});
+
+const RemoteСontrolPointPage = loadable(
+  () => import('@/pages/points/remoteСontrolPoint'),
+  {
+    resolveComponent: (components) => components.RemoteСontrolPointPage,
+  },
+);
+
+const SettingsPointPage = loadable(
+  () => import('@/pages/points/settingsPoint'),
+  {
+    resolveComponent: (components) => components.SettingsPointPage,
+  },
+);
+
+const AgentsAdministrationPage = loadable(
+  () => import('@/pages/administration/agentsAdministration'),
+  {
+    resolveComponent: (components) => components.AgentsAdministrationPage,
+  },
+);
+
+const EmployeesAdministrationPage = loadable(
+  () => import('@/pages/administration/employeesAdministration'),
+  {
+    resolveComponent: (components) => components.EmployeesAdministrationPage,
+  },
+);
+
+const FranchiseeAdministrationPage = loadable(
+  () => import('@/pages/administration/franchiseeAdministration'),
+  {
+    resolveComponent: (components) => components.FranchiseeAdministrationPage,
+  },
+);
+
+const PointsAdministrationPage = loadable(
+  () => import('@/pages/administration/pointsAdministration'),
+  {
+    resolveComponent: (components) => components.PointsAdministrationPage,
+  },
+);
 
 const GeneralReportPage = loadable(
   () => import('@/pages/reports/generalReport'),
@@ -43,57 +97,134 @@ const CollectionReportPage = loadable(
 
 const ROUTES = [
   {
-    id: 'LoginPage',
+    id: PATH_CONFIG[PATH_PAGE.login].id,
     path: PATH_PAGE.login,
     element: <LoginPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.login],
+    title: PATH_CONFIG[PATH_PAGE.login].title,
   },
   {
-    id: 'NotFoundPage',
+    id: PATH_CONFIG[PATH_PAGE.page404].id,
     path: PATH_PAGE.page404,
     element: <NotFoundPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.page404],
+    title: PATH_CONFIG[PATH_PAGE.page404].title,
   },
   {
-    id: 'AboutPage',
+    id: PATH_CONFIG[PATH_PAGE.about].id,
     path: PATH_PAGE.about,
     element: <AboutPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.about],
+    title: PATH_CONFIG[PATH_PAGE.about].title,
     isPrivate: true,
   },
   {
-    id: 'ProfilePage',
+    id: PATH_CONFIG[PATH_PAGE.profile].id,
     path: PATH_PAGE.profile,
     element: <ProfilePage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.profile],
+    title: PATH_CONFIG[PATH_PAGE.profile].title,
     isPrivate: true,
   },
   {
-    id: 'ReportPage',
+    id: PATH_CONFIG[PATH_PAGE.statistics].id,
+    path: PATH_PAGE.statistics,
+    element: <StatisticsPage />,
+    title: PATH_CONFIG[PATH_PAGE.statistics].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.monitoring].id,
+    path: PATH_PAGE.monitoring,
+    element: <MonitoringPage />,
+    title: PATH_CONFIG[PATH_PAGE.monitoring].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.payment].id,
+    path: PATH_PAGE.payment,
+    element: <PaymentPage />,
+    title: PATH_CONFIG[PATH_PAGE.payment].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.points.root].id,
+    path: PATH_PAGE.points.root,
+    element: <RemoteСontrolPointPage />,
+    title: PATH_CONFIG[PATH_PAGE.points.root].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.points.remoteСontrol].id,
+    path: PATH_PAGE.points.remoteСontrol,
+    element: <RemoteСontrolPointPage />,
+    title: PATH_CONFIG[PATH_PAGE.points.remoteСontrol].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.points.settings].id,
+    path: PATH_PAGE.points.settings,
+    element: <SettingsPointPage />,
+    title: PATH_CONFIG[PATH_PAGE.points.settings].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.administration.root].id,
+    path: PATH_PAGE.administration.root,
+    element: <AgentsAdministrationPage />,
+    title: PATH_CONFIG[PATH_PAGE.administration.root].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.administration.agents].id,
+    path: PATH_PAGE.administration.agents,
+    element: <AgentsAdministrationPage />,
+    title: PATH_CONFIG[PATH_PAGE.administration.agents].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.administration.employees].id,
+    path: PATH_PAGE.administration.employees,
+    element: <EmployeesAdministrationPage />,
+    title: PATH_CONFIG[PATH_PAGE.administration.employees].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.administration.franchisee].id,
+    path: PATH_PAGE.administration.franchisee,
+    element: <FranchiseeAdministrationPage />,
+    title: PATH_CONFIG[PATH_PAGE.administration.franchisee].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.administration.points].id,
+    path: PATH_PAGE.administration.points,
+    element: <PointsAdministrationPage />,
+    title: PATH_CONFIG[PATH_PAGE.administration.points].title,
+    isPrivate: true,
+  },
+  {
+    id: PATH_CONFIG[PATH_PAGE.report.root].id,
     path: PATH_PAGE.report.root,
     element: <GeneralReportPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.report.root],
+    title: PATH_CONFIG[PATH_PAGE.report.root].title,
     isPrivate: true,
   },
   {
-    id: 'GeneralReportPage',
+    id: PATH_CONFIG[PATH_PAGE.report.general].id,
     path: PATH_PAGE.report.general,
     element: <GeneralReportPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.report.general],
+    title: PATH_CONFIG[PATH_PAGE.report.general].title,
     isPrivate: true,
   },
   {
-    id: 'DetailsReportPage',
+    id: PATH_CONFIG[PATH_PAGE.report.details].id,
     path: PATH_PAGE.report.details,
     element: <DetailsReportPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.report.details],
+    title: PATH_CONFIG[PATH_PAGE.report.details].title,
     isPrivate: true,
   },
   {
-    id: 'CollectionReportPage',
+    id: PATH_CONFIG[PATH_PAGE.report.collection].id,
     path: PATH_PAGE.report.collection,
     element: <CollectionReportPage />,
-    title: PATH_PAGE_TRANSLATE_RU[PATH_PAGE.report.collection],
+    title: PATH_CONFIG[PATH_PAGE.report.collection].title,
     isPrivate: true,
   },
 ];
@@ -114,7 +245,7 @@ export const Router = () => (
         </PrivateLayout>
       }
     >
-      <Route index element={<AboutPage />} />
+      <Route index element={<StatisticsPage />} />
       {PRIVATE_ROUTES.map(({ id, path, element, title }) => (
         <Route
           key={id}
