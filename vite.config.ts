@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import browserslistToEsbuild from 'browserslist-to-esbuild';
+import Unfonts from 'unplugin-fonts/vite';
 import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
@@ -15,6 +16,27 @@ export default defineConfig({
     ViteImageOptimizer(),
     viteCompression({
       filter: /\.(js|css|html|svg)$/,
+    }),
+    Unfonts({
+      custom: {
+        families: [
+          {
+            name: 'Roboto Regular',
+            local: 'Roboto-regular',
+            src: './src/shared/assets/fonts/Regular/Roboto-Regular.woff2',
+          },
+          {
+            name: 'Roboto Medium',
+            local: 'Roboto-medium',
+            src: './src/shared/assets/fonts/Medium/Roboto-Medium.woff2',
+          },
+          {
+            name: 'Roboto Bold',
+            local: 'Roboto-bold',
+            src: './src/shared/assets/fonts/Bold/Roboto-Bold.woff2',
+          },
+        ],
+      },
     }),
   ],
   base: '/doda/',

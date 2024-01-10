@@ -1,4 +1,4 @@
-# Doda Амдинистратирование
+# Doda Амдинистрирование
 
 
 ``npm install -g pnpm``
@@ -15,3 +15,5 @@
 > React Router v6 https://reactrouter.com/
 
 > Recharts https://recharts.org/
+
+> Ant Design https://ant.design/
