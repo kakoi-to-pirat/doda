@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import { PATH_PAGE } from '@/shared/lib';
-import { Button } from '@/shared/ui/button';
 import { Result } from '@/shared/ui/result';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { Header } from '@/widgets/header';

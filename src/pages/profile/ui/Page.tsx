@@ -8,6 +8,8 @@ export const ProfilePage = () => (
       <Logo />
       <Breadcrumbs />
     </Header>
+
     <h2>Профиль</h2>
+    <p>Страница профиля пользователя</p>
   </>
 );
