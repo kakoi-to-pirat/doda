@@ -28,7 +28,9 @@ export const StatisticsPage = () => {
         <RangePicker onChange={onChange} placeholder={['c', 'по']} />
       </Space>
 
-      <Chart className={s.statistics__chart} />
+      <div style={{ height: '400px' }} className={s.statistics__chart}>
+        <Chart height={400} />
+      </div>
     </div>
   );
 };
