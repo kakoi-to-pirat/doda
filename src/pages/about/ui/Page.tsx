@@ -3,8 +3,10 @@ import { DatePicker, Space } from 'antd';
 import { useState } from 'react';
 
 import { Button } from '@/shared/ui/button';
+import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { Chart } from '@/widgets/chart';
 import { Header } from '@/widgets/header';
+import { Logo } from '@/widgets/logo';
 
 import s from './Page.module.css';
 
@@ -17,7 +19,10 @@ export const AboutPage = () => {
 
   return (
     <div className={s.about}>
-      <Header className={s.layout__header} />
+      <Header className={s.layout__header}>
+        <Logo />
+        <Breadcrumbs />
+      </Header>
 
       <Space direction='horizontal'>
         с<DatePicker placeholder='' onChange={onChange} />

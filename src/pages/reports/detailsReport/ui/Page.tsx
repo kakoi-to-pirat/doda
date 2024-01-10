@@ -2,12 +2,12 @@ import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { Header } from '@/widgets/header';
 import { Logo } from '@/widgets/logo';
 
-export const ProfilePage = () => (
+export const DetailsReportPage = () => (
   <>
     <Header>
       <Logo />
       <Breadcrumbs />
     </Header>
-    <h2>Профиль</h2>
+    <h2>Детальный отчет</h2>
   </>
 );
