@@ -1,14 +1,12 @@
 import { Breadcrumb } from 'antd';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { PATH_PAGE, PATH_CONFIG } from '@/shared/lib';
+import { PATH_PAGE, PATH_CONFIG, useCrumbs } from '@/shared/lib';
 
 export const Breadcrumbs = ({ isGoBack = false, backTitle = 'Назад' }) => {
-  const location = useLocation();
-  const crumbs = location.pathname.split('/').filter(Boolean);
-  const isMainPage = crumbs.length <= 1;
+  const [crumbs, isRootPage] = useCrumbs();
 
-  if (isMainPage) return;
+  if (isRootPage) return;
 
   if (isGoBack) {
     const prevLastCrumbUrl = `${crumbs.slice(0, crumbs.length - 1).join('/')}`;

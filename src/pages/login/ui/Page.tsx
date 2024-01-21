@@ -1,16 +1,17 @@
-import { Navigate } from 'react-router-dom';
-
-import { PATH_PAGE } from '@/shared/lib';
+import { AuthLoginNavigate, LoginForm } from '@/features/auth';
+import { Header } from '@/widgets/header';
+import { Logo } from '@/widgets/logo';
 
 import s from './Page.module.css';
 
-export const LoginPage = () => {
-  // In PrivateLayout too
-  const isAuth = true;
+export const LoginPage = () => (
+  <AuthLoginNavigate>
+    <div className={s.auth}>
+      <Header>
+        <Logo />
+      </Header>
 
-  if (isAuth) {
-    return <Navigate to={PATH_PAGE.root} />;
-  }
-
-  return <div className={s.auth}>Login page</div>;
-};
+      <LoginForm />
+    </div>
+  </AuthLoginNavigate>
+);
