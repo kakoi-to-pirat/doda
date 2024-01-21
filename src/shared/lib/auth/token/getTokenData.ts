@@ -1,5 +1,4 @@
-import { jwtDecode } from 'jwt-decode';
-
+import { decodeToken } from './decodeToken';
 import { getToken } from './getToken';
 import { IToken } from './token.h';
 
@@ -9,7 +8,12 @@ export type TokenData = IToken | null | '';
 
 export const getTokenData = (tokenType: keyof typeof AUTH_TOKEN): TokenData => {
   const token = getToken(tokenType);
-  const decodedToken = token && jwtDecode<IToken>(token);
+
+  if (!token) {
+    return null;
+  }
+
+  const decodedToken = decodeToken(token);
 
   return decodedToken;
 };

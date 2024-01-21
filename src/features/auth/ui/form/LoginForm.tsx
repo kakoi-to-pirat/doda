@@ -1,16 +1,24 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, Spin } from 'antd';
 
 import { IAuthField } from './LoginForm.h';
 import s from './LoginForm.module.css';
 
-import { loginUser } from '../../lib/loginUser';
+import { useLoginUser } from '../../api/auth';
+import { loginUser } from '../../model/loginUser';
 
 export const LoginForm = () => {
+  const { mutate, isPending } = useLoginUser();
+
   const onFinish = (values: IAuthField) => {
     // eslint-disable-next-line no-console
     console.log('Success:', values);
 
-    loginUser({ email: '', name: values.username });
+    mutate(
+      { name: values.useremail, password: values.password },
+      {
+        onSuccess: ({ data: [{ accessToken }] }) => loginUser(accessToken),
+      },
+    );
   };
 
   const onFinishFailed = (errorInfo: unknown) => {
@@ -18,9 +26,11 @@ export const LoginForm = () => {
     console.log('Failed:', errorInfo);
   };
 
-  return (
+  return isPending ? (
+    <Spin className={s.loginForm} />
+  ) : (
     <Form
-      className={s.auth__form}
+      className={s.loginForm}
       name='basic'
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
@@ -30,8 +40,8 @@ export const LoginForm = () => {
       autoComplete='off'
     >
       <Form.Item<IAuthField>
-        label='Имя'
-        name='username'
+        label='Email'
+        name='useremail'
         rules={[{ required: true, message: 'Пожалуйста, укажите свое имя!' }]}
       >
         <Input />

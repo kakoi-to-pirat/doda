@@ -1,5 +1,5 @@
 export interface IAuthField {
-  username: string;
+  useremail: string;
   password: string;
   remember?: string;
 }

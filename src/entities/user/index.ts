@@ -1,3 +1,4 @@
+export type { IUser } from './model/types.h';
 export {
   useCurrentUser,
   addUser,

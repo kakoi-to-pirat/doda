@@ -25,4 +25,3 @@ export const userStore = create<IUserState>()(
     { name: USER_STORE },
   ),
 );
-
