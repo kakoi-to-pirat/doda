@@ -1,9 +1,7 @@
 import { logoutUser } from '@/features/auth';
 import { Button } from '@/shared/ui/button';
 
-interface ILogoutButton {
-  children: React.ReactNode;
-}
+import { ILogoutButton } from './LogoutButton.h';
 
 export const LogoutButton = ({ children }: ILogoutButton) => (
   <Button type='link' onClick={logoutUser}>

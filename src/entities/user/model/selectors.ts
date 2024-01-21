@@ -1,6 +1,6 @@
 import { useStore } from 'zustand';
 
-import { AUTH_TOKEN, isTokenValidExpiration } from '@/shared/lib';
+import { AUTH_TOKEN, getTokenData, isTokenValidExpiration } from '@/shared/lib';
 
 import { userStore } from './store';
 import { IUser } from './types.h';
@@ -19,8 +19,23 @@ export const updateUserName = (name: string) =>
 
 export const useCurrentUserAuth = () =>
   useStore(userStore, (state) => {
-    const hasUser = Boolean(state.user);
     const hasActualToken = isTokenValidExpiration(AUTH_TOKEN.accessToken);
 
-    return hasUser && hasActualToken;
+    if (!hasActualToken) {
+      return false;
+    }
+
+    const hasUser = Boolean(state.user);
+
+    if (hasUser) {
+      return true;
+    }
+
+    const { Email, GivenName } = getTokenData(AUTH_TOKEN.accessToken) || {};
+
+    if (Email && GivenName) {
+      state.setUser({ email: Email, name: GivenName });
+    }
+
+    return true;
   });
