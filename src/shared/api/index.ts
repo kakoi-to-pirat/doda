@@ -1,4 +1,4 @@
-export { API } from './api';
+export { HTTP } from './http';
 
-export type { IUserDto, IAuthResponse } from './auth.h';
-export { auth } from './auth';
+export type { IUserDto, IAuthResponse } from './auth/auth.h';
+export { auth } from './auth/auth';
