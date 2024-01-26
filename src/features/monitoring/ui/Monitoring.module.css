@@ -1,0 +1,19 @@
+.monitoring__table tr:hover td {
+  background-color: var(--color-grey) !important;
+}
+
+.monitoring__bar {
+  display: flex;
+  gap: 15px;
+}
+
+.monitoring__options {
+  display: flex;
+  gap: 15px;
+}
+
+.monitoring__optionColumns {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
