@@ -91,7 +91,13 @@ export const ConfigureColumns = ({
   };
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    console.log({ active });
+
     if (active.id === over?.id) {
+      return;
+    }
+
+    if (checkedColumns.every(({ key }) => key !== active.id)) {
       return;
     }
 
