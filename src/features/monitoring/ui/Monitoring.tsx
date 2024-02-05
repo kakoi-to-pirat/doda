@@ -4,9 +4,8 @@ import {
   TableProps,
   Table,
   Modal,
-  DatePicker,
+  Select,
 } from 'antd';
-import { RangePickerProps } from 'antd/es/date-picker';
 import { ColumnType } from 'antd/es/table';
 import { useState } from 'react';
 
@@ -15,8 +14,6 @@ import { SettingOutlined } from '@ant-design/icons';
 
 import { data, IMonitioringData } from './data';
 import s from './Monitoring.module.css';
-
-const { RangePicker } = DatePicker;
 
 // import { DownOutlined } from '@ant-design/icons';
 
@@ -77,7 +74,7 @@ const columns: TableProps<IMonitioringData>['columns'] = [
     render: (text, { type }) => renderCell(text, type),
   },
   {
-    title: 'Номер водяного насоса',
+    title: 'Заводской номер',
     key: 'waterPumpNumber',
     dataIndex: 'waterPumpNumber',
     filterMode: 'tree',
@@ -155,7 +152,7 @@ const columns: TableProps<IMonitioringData>['columns'] = [
     title: 'Номер точки',
     key: 'pointNumber',
     dataIndex: 'pointNumber',
-    filterMode: 'tree',
+    filterMode: 'menu',
     filterSearch: true,
     filters: data.map(({ pointNumber }) => ({
       text: pointNumber,
@@ -186,7 +183,7 @@ const columns: TableProps<IMonitioringData>['columns'] = [
     render: (value, { type }) => renderCell(`${value} °C`, type),
   },
   {
-    title: 'Сумма наличности в кассе',
+    title: 'Наличные в кассе',
     key: 'amountCashOnHand',
     dataIndex: 'amountCashOnHand',
     sorter: (a, b) => a.amountCashOnHand - b.amountCashOnHand,
@@ -265,18 +262,92 @@ export const Monitoring = () => {
     checkedList.includes(item.key as string),
   );
 
-  const onChangRange: RangePickerProps['onChange'] = (date, dateString) => {
-    // eslint-disable-next-line no-console
-    console.log(date, dateString);
-  };
-
   return (
     <>
       <div className={s.monitoring__bar}>
         <Button type='primary' onClick={showModal}>
           <SettingOutlined />
         </Button>
-        <RangePicker onChange={onChangRange} placeholder={['c', 'по']} />
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder='Агент'
+          optionFilterProp='children'
+          filterOption={(input, option) =>
+            (option?.label ?? '').includes(input)
+          }
+          filterSort={(optionA, optionB) =>
+            (optionA?.label ?? '')
+              .toLowerCase()
+              .localeCompare((optionB?.label ?? '').toLowerCase())
+          }
+          options={[
+            {
+              value: '1',
+              label: '0101200341',
+            },
+            {
+              value: '2',
+              label: '0101200342',
+            },
+            {
+              value: '3',
+              label: '0101200343',
+            },
+            {
+              value: '4',
+              label: '0101200344',
+            },
+            {
+              value: '5',
+              label: '0101200345',
+            },
+            {
+              value: '6',
+              label: '0101200346',
+            },
+          ]}
+        />
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder='Точка'
+          optionFilterProp='children'
+          filterOption={(input, option) =>
+            (option?.label ?? '').includes(input)
+          }
+          filterSort={(optionA, optionB) =>
+            (optionA?.label ?? '')
+              .toLowerCase()
+              .localeCompare((optionB?.label ?? '').toLowerCase())
+          }
+          options={[
+            {
+              value: '1',
+              label: '1010',
+            },
+            {
+              value: '2',
+              label: '1011',
+            },
+            {
+              value: '3',
+              label: '1012',
+            },
+            {
+              value: '4',
+              label: '1014',
+            },
+            {
+              value: '5',
+              label: '1014',
+            },
+            {
+              value: '6',
+              label: '1016',
+            },
+          ]}
+        />
       </div>
 
       <Modal
@@ -303,7 +374,7 @@ export const Monitoring = () => {
           locale: { items_per_page: 'строк' },
           showSizeChanger: true,
         }}
-        // scroll={{ y: 340 }}
+        scroll={{ y: 340 }}
         size='small'
       />
     </>
