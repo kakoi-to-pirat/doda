@@ -12,7 +12,7 @@ export interface IMonitioringData {
   status: 'ok' | 'fail';
   softwareVersion: number;
   type: 'selected' | 'picked' | 'missedSession' | 'noConnection';
-  key: number;
+  key: string | number;
 }
 
 export const data: IMonitioringData[] = [
