@@ -3,6 +3,8 @@ export { BASE_URL, URL } from './config/urls';
 export { LAYOUT } from './config/layout';
 export { AUTH_TOKEN } from './config/token';
 
+export { localStorageConfig } from './localStorage/localStorageConfig';
+
 export type { TokenData } from './auth/token/getTokenData';
 export type { IToken } from './auth/token/token.h';
 
