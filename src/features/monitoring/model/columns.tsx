@@ -1,7 +1,10 @@
-import { ColumnsType } from 'antd/es/table';
+import { ColumnType } from 'antd/es/table';
 
 import { IMonitioringData, data } from './data';
-import s from './Monitoring.module.css';
+
+interface ColumnTypeChecked extends ColumnType<IMonitioringData> {
+  isChecked?: boolean;
+}
 
 type TColors = {
   selected: string;
@@ -21,13 +24,12 @@ const renderCell = (children: React.ReactNode, type: keyof TColors) => {
   return {
     props: {
       style: { backgroundColor: colors[type] },
-      className: s.monitoringTable__cell,
     },
     children,
   };
 };
 
-export const columns: ColumnsType<IMonitioringData> = [
+export const columns: ColumnTypeChecked[] = [
   {
     title: '№',
     key: 'rowId',
@@ -35,27 +37,13 @@ export const columns: ColumnsType<IMonitioringData> = [
     render: (_, { type, key }) => renderCell(key, type),
   },
   {
-    title: 'Время обмена',
+    title: 'Последний обмен',
     key: 'exchangeTime',
     dataIndex: 'exchangeTime',
     render: (text, { type }) => renderCell(text, type),
   },
   {
-    title: 'Последняя транзакция',
-    key: 'lastTransaction',
-    dataIndex: 'lastTransaction',
-    // sorter: (a, b) => a.lastTransaction - b.lastTransaction,
-    render: (text, { type }) => renderCell(text, type),
-  },
-  {
-    title: 'Номер агента',
-    key: 'agentNumber',
-    dataIndex: 'agentNumber',
-    sorter: (a, b) => a.agentNumber - b.agentNumber,
-    render: (text, { type }) => renderCell(text, type),
-  },
-  {
-    title: 'Заводской номер',
+    title: 'Номер водомата',
     key: 'waterPumpNumber',
     dataIndex: 'waterPumpNumber',
     filterMode: 'tree',
@@ -70,6 +58,13 @@ export const columns: ColumnsType<IMonitioringData> = [
         .includes(String(value).toLocaleLowerCase()),
     // width: '30%',
     // align: 'center',
+    render: (text, { type }) => renderCell(text, type),
+  },
+  {
+    title: 'Сумма наличности',
+    key: 'amountCashOnHand',
+    dataIndex: 'amountCashOnHand',
+    sorter: (a, b) => a.amountCashOnHand - b.amountCashOnHand,
     render: (text, { type }) => renderCell(text, type),
   },
   {
@@ -89,6 +84,20 @@ export const columns: ColumnsType<IMonitioringData> = [
       },
     ],
     onFilter: (value, record) => record.address.startsWith(String(value)),
+    render: (text, { type }) => renderCell(text, type),
+  },
+  {
+    title: 'Время последней продажи',
+    key: 'lastTransaction',
+    dataIndex: 'lastTransaction',
+    // sorter: (a, b) => a.lastTransaction - b.lastTransaction,
+    render: (text, { type }) => renderCell(text, type),
+  },
+  {
+    title: 'Номер агента',
+    key: 'agentNumber',
+    dataIndex: 'agentNumber',
+    sorter: (a, b) => a.agentNumber - b.agentNumber,
     render: (text, { type }) => renderCell(text, type),
   },
   {
@@ -153,6 +162,7 @@ export const columns: ColumnsType<IMonitioringData> = [
     width: '120px',
     align: 'center',
     render: (value, { type }) => renderCell(`${value} °C`, type),
+    isChecked: false,
   },
   {
     title: 't° Бокса',
@@ -162,13 +172,7 @@ export const columns: ColumnsType<IMonitioringData> = [
     width: '120px',
     align: 'center',
     render: (value, { type }) => renderCell(`${value} °C`, type),
-  },
-  {
-    title: 'Наличные в кассе',
-    key: 'amountCashOnHand',
-    dataIndex: 'amountCashOnHand',
-    sorter: (a, b) => a.amountCashOnHand - b.amountCashOnHand,
-    render: (text, { type }) => renderCell(text, type),
+    isChecked: false,
   },
   {
     title: 'Статус',
@@ -195,5 +199,6 @@ export const columns: ColumnsType<IMonitioringData> = [
     dataIndex: 'softwareVersion',
     sorter: (a, b) => a.softwareVersion - b.softwareVersion,
     render: (text, { type }) => renderCell(text, type),
+    isChecked: false,
   },
 ];

@@ -1,30 +1,62 @@
 import { Table, Modal, Select } from 'antd';
+import { ColumnsType } from 'antd/es/table';
+import get from 'lodash/get';
 import { useState } from 'react';
 
+import { localStorageConfig } from '@/shared/lib';
 import { Button } from '@/shared/ui/button';
+import {
+  CheckboxDragGroup,
+  ICheckboxDragGroupItem,
+} from '@/shared/ui/checkboxDragGroup';
 import { SettingOutlined } from '@ant-design/icons';
 
-import { columns } from './columns';
-import { ConfigureColumns } from './ConfigureColumns';
-import { data } from './data';
 import s from './Monitoring.module.css';
 
+import { columns as columnsList } from '../model/columns';
+import { IMonitioringData, data } from '../model/data';
+
 export const Monitoring = () => {
+  const columnsFromStorage: ColumnsType<IMonitioringData> =
+    localStorageConfig.get('table.monitoring.columns');
+
+  const columns = columnsFromStorage
+    ? columnsFromStorage.map((column) => ({
+        ...columnsList.filter(({ key }) => column.key === key)[0],
+        ...column,
+      }))
+    : columnsList;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentColumns, setCurrentColumns] = useState(columns);
+  const [tempColumns, setTempColumns] = useState(columns);
+
+  const [pageSize, setPageSize] = useState(
+    localStorageConfig.get('table.monitoring.pageSize', 10),
+  );
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const handleOk = () => {
-    // setCheckedList(checkedListTemp);
+    setCurrentColumns(tempColumns);
+
+    localStorageConfig.setTo('table', 'monitoring', {
+      ...localStorageConfig.get('table.monitoring'),
+      columns: tempColumns,
+    });
+
     setIsModalOpen(false);
   };
 
   const handleCancel = () => {
-    // setCheckedListTemp(checkedList);
+    setTempColumns(currentColumns);
     setIsModalOpen(false);
+  };
+
+  const handleReset = () => {
+    setTempColumns(columnsList);
   };
 
   return (
@@ -119,23 +151,59 @@ export const Monitoring = () => {
         cancelText='Отмена'
         title='Колонки таблицы'
         open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        footer={
+          <div className={s.modal__footer}>
+            <Button onClick={handleOk} className={s.modal__footerLeftBtn}>
+              Применить
+            </Button>
+            <Button onClick={handleCancel} type='default'>
+              Отмена
+            </Button>
+            <Button onClick={handleReset} type='default'>
+              Установить по умолчание
+            </Button>
+          </div>
+        }
       >
-        <ConfigureColumns
-          onCheked={setCurrentColumns}
-          onDragEnd={setCurrentColumns}
+        <CheckboxDragGroup
+          items={tempColumns.map(
+            (column) =>
+              ({
+                ...column,
+                isChecked: get(column, 'isChecked', true),
+              }) as ICheckboxDragGroupItem,
+          )}
+          onChange={(columns) =>
+            setTempColumns(columns as ColumnsType<IMonitioringData>)
+          }
         />
       </Modal>
 
       <Table
         rootClassName={s.monitoring__table}
         dataSource={data}
-        columns={currentColumns}
+        columns={currentColumns.filter((column) =>
+          get(column, 'isChecked', true),
+        )}
         pagination={{
+          pageSize,
+          defaultCurrent: localStorageConfig.get('table.monitoring.page', 1),
           pageSizeOptions: [5, 10, 15, 20, 40, 80, 100],
           locale: { items_per_page: 'строк' },
           showSizeChanger: true,
+          onChange: (page) =>
+            localStorageConfig.setTo('table', 'monitoring', {
+              ...localStorageConfig.get('table.monitoring'),
+              page,
+            }),
+          onShowSizeChange: (page: number, pageSize: number) => {
+            setPageSize(pageSize);
+            localStorageConfig.setTo('table', 'monitoring', {
+              ...localStorageConfig.get('table.monitoring'),
+              page,
+              pageSize,
+            });
+          },
         }}
         scroll={{ y: 340 }}
         size='small'
