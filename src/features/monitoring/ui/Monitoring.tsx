@@ -151,6 +151,7 @@ export const Monitoring = () => {
         cancelText='Отмена'
         title='Колонки таблицы'
         open={isModalOpen}
+        onCancel={handleCancel}
         footer={
           <div className={s.modal__footer}>
             <Button onClick={handleOk} className={s.modal__footerLeftBtn}>
