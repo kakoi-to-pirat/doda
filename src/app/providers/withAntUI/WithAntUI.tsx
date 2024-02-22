@@ -30,6 +30,9 @@ export const WithAntUI = ({ children }: IWithAntUI): JSX.Element => (
           collapsedIconSize: 18,
           collapsedWidth: 45,
         },
+        Table: {
+          headerBorderRadius: 0,
+        },
       },
     }}
   >

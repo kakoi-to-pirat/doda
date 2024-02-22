@@ -4,6 +4,9 @@
 
 .monitoring__bar {
   display: flex;
+
+  padding-right: 15px;
+  padding-left: 15px;
   gap: 15px;
 }
 

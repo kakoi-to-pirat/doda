@@ -1,42 +1,8 @@
-.layout {
-  display: grid;
-  flex-direction: column;
-
-  width: 100%;
-  min-height: 100vh;
-
-  transition: all 0.4s;
-
-  background-color: var(--color-main-bg);
-
-  grid-template-areas:
-    'nav  main'
-    'nav  main';
-  grid-template-columns: 200px 1fr;
-}
-
-.layout--collapseNav {
-  grid-template-columns: 46px 1fr;
-}
-
-.layout__header {
-  grid-area: head;
-}
-
-.layout__navigation {
-  grid-area: nav;
-}
-
-.layout__main {
-  grid-area: main;
-}
-
 .main {
   display: flex;
   flex-direction: column;
 
-  padding: var(--base-page-padding);
+  padding-top: calc(var(--base-height) + 15px);
 
-  border-radius: var(--base-border-radius) 0 0 0;
   background-color: var(--color-white);
 }

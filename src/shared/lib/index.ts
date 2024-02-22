@@ -16,3 +16,5 @@ export { getTokenData } from './auth/token/getTokenData';
 export { isTokenValidExpiration } from './auth/token/isTokenValidExpiration';
 
 export { useCrumbs } from './location/useCrumbs';
+
+export { useWindowResize } from './hooks/useWindowResize';

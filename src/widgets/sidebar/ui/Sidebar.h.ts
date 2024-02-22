@@ -1,4 +1,3 @@
 export interface ISidebar {
-  className?: string;
-  onCollapse?: () => void;
+  onToggle?: (value: boolean) => void;
 }

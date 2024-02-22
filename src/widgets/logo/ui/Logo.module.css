@@ -4,8 +4,7 @@
 }
 
 .logo img {
-  width: 90px;
-  height: var(--base-height);
+  width: 60px;
 }
 
 .logo:hover img {

@@ -148,6 +148,7 @@ export const Monitoring = () => {
       </div>
 
       <Modal
+        centered
         cancelText='Отмена'
         title='Колонки таблицы'
         open={isModalOpen}
@@ -161,7 +162,7 @@ export const Monitoring = () => {
               Отмена
             </Button>
             <Button onClick={handleReset} type='default'>
-              Установить по умолчание
+              Сбросить
             </Button>
           </div>
         }
@@ -206,7 +207,7 @@ export const Monitoring = () => {
             });
           },
         }}
-        scroll={{ y: 340 }}
+        scroll={{ y: 340, x: 680 }}
         size='small'
       />
     </>

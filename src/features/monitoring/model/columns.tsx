@@ -34,16 +34,18 @@ export const columns: ColumnTypeChecked[] = [
     title: '№',
     key: 'rowId',
     dataIndex: 'rowId',
+    width: 50,
     render: (_, { type, key }) => renderCell(key, type),
   },
   {
-    title: 'Последний обмен',
+    title: 'Обмен',
     key: 'exchangeTime',
     dataIndex: 'exchangeTime',
+    // width: 100,
     render: (text, { type }) => renderCell(text, type),
   },
   {
-    title: 'Номер водомата',
+    title: '№ водомата',
     key: 'waterPumpNumber',
     dataIndex: 'waterPumpNumber',
     filterMode: 'tree',
@@ -52,6 +54,7 @@ export const columns: ColumnTypeChecked[] = [
       text: waterPumpNumber,
       value: waterPumpNumber,
     })),
+    // width: 130,
     onFilter: (value, record) =>
       record.waterPumpNumber
         .toLocaleLowerCase()
@@ -61,14 +64,15 @@ export const columns: ColumnTypeChecked[] = [
     render: (text, { type }) => renderCell(text, type),
   },
   {
-    title: 'Сумма наличности',
+    title: 'Сумма нал.',
     key: 'amountCashOnHand',
     dataIndex: 'amountCashOnHand',
+    // width: 110,
     sorter: (a, b) => a.amountCashOnHand - b.amountCashOnHand,
     render: (text, { type }) => renderCell(text, type),
   },
   {
-    title: 'Адрес установки',
+    title: 'Адрес',
     key: 'address',
     dataIndex: 'address',
     filterMode: 'tree',
@@ -83,20 +87,23 @@ export const columns: ColumnTypeChecked[] = [
         value: 'Курсавка',
       },
     ],
+    // width: 140,
     onFilter: (value, record) => record.address.startsWith(String(value)),
     render: (text, { type }) => renderCell(text, type),
   },
   {
-    title: 'Время последней продажи',
+    title: 'Последней продажи',
     key: 'lastTransaction',
     dataIndex: 'lastTransaction',
     // sorter: (a, b) => a.lastTransaction - b.lastTransaction,
     render: (text, { type }) => renderCell(text, type),
+    isChecked: false,
   },
   {
-    title: 'Номер агента',
+    title: 'Агент',
     key: 'agentNumber',
     dataIndex: 'agentNumber',
+    width: 90,
     sorter: (a, b) => a.agentNumber - b.agentNumber,
     render: (text, { type }) => renderCell(text, type),
   },
@@ -137,9 +144,10 @@ export const columns: ColumnTypeChecked[] = [
         .toLocaleLowerCase()
         .includes(String(value).toLocaleLowerCase()),
     render: (text, { type }) => renderCell(text, type),
+    isChecked: false,
   },
   {
-    title: 'Номер точки',
+    title: '№ точки',
     key: 'pointNumber',
     dataIndex: 'pointNumber',
     filterMode: 'menu',
@@ -153,6 +161,7 @@ export const columns: ColumnTypeChecked[] = [
         .toLocaleLowerCase()
         .includes(String(value).toLocaleLowerCase()),
     render: (text, { type }) => renderCell(text, type),
+    isChecked: false,
   },
   {
     title: 't° Бака',
@@ -192,6 +201,7 @@ export const columns: ColumnTypeChecked[] = [
     ],
     onFilter: (value, record) => record.status.startsWith(String(value)),
     render: (text, { type }) => renderCell(text, type),
+    isChecked: false,
   },
   {
     title: 'Версия ПО',

@@ -16,7 +16,7 @@ export const StatisticsPage = () => {
   return (
     <div className={s.statistics}>
       <Space direction='horizontal'>
-        <Radio.Group defaultValue='week' buttonStyle='solid'>
+        <Radio.Group defaultValue='week' buttonStyle='solid' size='small'>
           <Radio.Button value='today'>Сегодня</Radio.Button>
           <Radio.Button value='yesterday'>Вчера</Radio.Button>
           <Radio.Button value='week'>Неделя</Radio.Button>
@@ -25,7 +25,11 @@ export const StatisticsPage = () => {
           <Radio.Button value='year'>Год</Radio.Button>
         </Radio.Group>
 
-        <RangePicker onChange={onChange} placeholder={['c', 'по']} />
+        <RangePicker
+          onChange={onChange}
+          placeholder={['c', 'по']}
+          size='small'
+        />
       </Space>
 
       <div style={{ height: '400px' }} className={s.statistics__chart}>
